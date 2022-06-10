@@ -12,6 +12,7 @@ const client = new Client({
   port: process.env.PORT,
 });
 
+// EXTRACT & LOAD procedure completed through the terminal using data from CSV files in data folder
 client.connect();
 // const connectToDB = async () => {
 //   await client.connect();
@@ -56,3 +57,7 @@ insertReal();
 //insertSomething();
 //getSomething();
 //endConnection();
+
+
+
+//select json_build_object()

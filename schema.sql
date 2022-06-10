@@ -15,5 +15,24 @@ CREATE TABLE IF NOT EXISTS answers (
    helpful int
 );
 
+CREATE TABLE IF NOT EXISTS questions (
+   id serial PRIMARY KEY,
+   product_id int references product(id) NOT NULL,
+   body varchar(4000),
+   date_written bigint,
+   asker_name varchar(50),
+   asker_email varchar(100),
+   reported int,
+   helpful int
+);
 
-\copy answers_photos(id,answer_id,url) FROM '/Users/valpizzo/Desktop/SDC Project/QandA_API/data/answers_photos.csv' DELIMITER ',' CSV HEADER;
+CREATE TABLE IF NOT EXISTS product (
+   id serial PRIMARY KEY,
+   name varchar(100),
+   slogan varchar(1000),
+   description varchar(2000),
+   category varchar(200),
+   default_price int
+);
+
+\copy questions(id, product_id, body, date_written, asker_name, asker_email, reported, helpful) FROM '/Users/valpizzo/Desktop/SDC/QandA_API/data/questions.csv' DELIMITER ',' CSV HEADER;
