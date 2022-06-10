@@ -1,0 +1,29 @@
+{
+  "name": "qanda_api",
+  "version": "1.0.0",
+  "description": "Service for the question and answers widget for Atelier front end",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pfowl/QandA_API.git"
+  },
+  "author": "Val Pizzo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pfowl/QandA_API/issues"
+  },
+  "homepage": "https://github.com/pfowl/QandA_API#readme",
+  "dependencies": {
+    "csv-parser": "^3.0.0",
+    "dotenv": "^16.0.1",
+    "pg": "^8.7.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.17.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0"
+  }
+}
