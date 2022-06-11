@@ -43,8 +43,29 @@ module.exports = {
   },
   getAnswers: async (QId) => {
     console.log('This should get the A data from the database');
-    const res = await client.query(`SELECT * FROM answers where question_id=${QId}`);
-    console.log(res.rows);
+    const res = await client.query(`SELECT json_build_object(
+      'question', ${QId},
+      'page', 'PENDING',
+      'count', 'PENDING',
+      'results', (
+        SELECT json_agg(json_build_object(
+          'answer_id', a.id,
+          'body', a.body,
+          'date', a.date_written,
+          'answerer_name', a.answerer_name,
+          'helpfulness', a.helpful,
+          'photos', (
+            SELECT coalesce(json_agg(json_build_object(
+              'id', ap.id,
+              'url', ap.url
+            )), '[]')
+            FROM answers_photos ap WHERE ap.answer_id=a.id
+          )
+        ))
+        FROM answers a WHERE a.question_id=${QId}
+      )
+    )`);
+    return res.rows;
   },
   postQuestion: async (questionObj) => {
     console.log('This should POST a new question to the database');
