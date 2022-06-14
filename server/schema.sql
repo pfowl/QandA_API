@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS questions (
    id serial PRIMARY KEY,
    product_id int references product(id) NOT NULL,
    body varchar(4000),
-   date_written bigint,
+   date_written text,
    asker_name varchar(50),
    asker_email varchar(100),
    reported int,
