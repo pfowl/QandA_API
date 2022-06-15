@@ -1,10 +1,22 @@
-// import http from 'k6/http';
-// import { sleep } from 'k6';
+import http from 'k6/http';
+import { sleep } from 'k6';
 
-// export default function () {
-//   http.get('http://localhost:3000/qa/6/answers');
-//   sleep(1);
-// }
+export const options = {
+  vus: 125,
+  duration: '30s',
+};
+// const idFirstTenQA = Math.floor(Math.random() * (3518963));
+// const idLastTenQA = Math.floor(Math.random() * (3518963 - 3160066) + 316006);
+// const idFirstTenA = Math.floor(Math.random() * (6189306));
+const idLastTenA = Math.floor(Math.random() * (6879306 - 6189306) + 6189306);
+
+export default function () {
+  // http.get(`http://localhost:3000/qa/${idFirstTenA}/answers`);
+  http.get(`http://localhost:3000/qa/${idLastTenA}/answers`);
+  // http.get(`http://localhost:3000/qa/${idFirstTenQA}`);
+  // http.get(`http://localhost:3000/qa/${idLastTenQA}`);
+  sleep(0.1);
+}
 
 // import { sleep } from 'k6';
 // import http from 'k6/http';

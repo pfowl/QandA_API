@@ -4,12 +4,10 @@ const models = require('./models');
 module.exports = {
   transformQuestions: async (req, res) => {
     const dataRes = await models.getQA(req.params.PId);
-    console.log('This should turn data into the right shape', req.params);
     res.status(200).send(dataRes[0].json_build_object);
   },
   transformAnswers: async (req, res) => {
     const dataRes = await models.getAnswers(req.params.QId, req.query.page, req.query.count);
-    console.log('This should turn answer data into the right shape', req.params);
     res.status(200).send(dataRes[0].json_build_object);
   },
   transformQuestionPost: (req, res) => {
@@ -38,7 +36,6 @@ module.exports = {
       .then((answerRes) => {
         models.postPhotos(req.params, req.body.photos, date)
           .then(() => {
-            console.log('This should POST answer data in the right shape', req.params);
             res.status(201);
           })
           .catch((err) => {

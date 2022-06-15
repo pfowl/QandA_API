@@ -3,7 +3,6 @@ const { client } = require('./db');
 // MODELS get data from the database as is
 module.exports = {
   getQA: async (PId) => {
-    console.log('This should get the Q data from the database');
     const res = await client.query(`SELECT json_build_object(
       'product_id', ${PId},
       'results', (
@@ -42,7 +41,6 @@ module.exports = {
     return res.rows;
   },
   getAnswers: async (QId, page = 1, count = 5) => {
-    console.log('This should get the A data from the database');
     const res = await client.query(`SELECT json_build_object(
       'question', ${QId},
       'page', ${page},
@@ -69,7 +67,6 @@ module.exports = {
     return res.rows;
   },
   postQuestion: async (id, q) => {
-    console.log('This should POST a new question to the database');
     const date = new Date().toISOString();
     const res = await client.query(`INSERT INTO questions
       (
@@ -93,7 +90,6 @@ module.exports = {
     return res;
   },
   postAnswer: async (id, a) => {
-    console.log('This should POST a new answer to a question to the databse');
     const res = await client.query(`INSERT INTO answers
       (
         "question_id",
@@ -116,7 +112,6 @@ module.exports = {
     return res;
   },
   postPhotos: async (QId, pArray, date) => {
-    console.log('This should POST new photos to answers_photos database', date);
     const answerId = await client.query(`SELECT id FROM answers a WHERE a.question_id=${QId.QId} AND a.date_written='${date}'`);
     await pArray.forEach((photo) => {
       client.query(`INSERT INTO answers_photos
