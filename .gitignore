@@ -1,4 +1,5 @@
 .env
+.pem
 *.csv
 .DS_Store
 node_modules/
