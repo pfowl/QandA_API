@@ -6,7 +6,7 @@ const fs = require('fs');
 
 const client = new Client({
   user: 'postgres',
-  host: 'localhost',
+  host: '35.173.178.167',
   database: 'test',
   password: process.env.PASSWORD,
   port: process.env.PORT,
