@@ -49,4 +49,7 @@ module.exports = {
         res.status(404).send(err);
       });
   },
+  sendToken: (req, res) => {
+    res.send('loaderio-dde1e0b18928dbd7055533c4e8beea22');
+  },
 };
